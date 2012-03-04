@@ -3,17 +3,19 @@
 // The Projector applies the specified material to _only_
 // this object.
 
+public var projectorMaterial : Material;
+
 function Start () {
-  
+
 }
 
 function Update () {
-  
+
 }
 
 function OnCollisionEnter (collision : Collision) {
   Debug.Log(collision.contacts.length);
-  
+
   // Debug-draw all contact points and normals
   var contactSum : Vector3 = Vector3.zero;
   var normalSum : Vector3 = Vector3.zero;
@@ -22,7 +24,7 @@ function OnCollisionEnter (collision : Collision) {
     contactSum = contactSum + contact.point;
     normalSum = normalSum + contact.normal;
   }
-  
+
   var contactAverage = contactSum * (1.0 / collision.contacts.length);
   var normalAverage = normalSum * (1.0 / collision.contacts.length);
 
@@ -35,6 +37,10 @@ function OnCollisionEnter (collision : Collision) {
   // Create a projector and attach it to the projectorWrapper
   var proj : Projector;
   proj = projectorWrapper.AddComponent ("Projector");
+  proj.material = projectorMaterial;
+  // Ignore the default & water layers.
+  // You must move this object into a different layer for the shadow to show.
+  proj.ignoreLayers = (1<<4)+(1<<0);
   projectorWrapper.transform.LookAt(contactAverage);
 }
 
