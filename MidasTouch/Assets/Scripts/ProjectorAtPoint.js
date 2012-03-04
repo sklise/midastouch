@@ -36,7 +36,7 @@ function OnCollisionEnter (collision : Collision) {
   projectorWrapper.transform.position = contactAverage + normalAverage * -1.5;
   // Create a projector and attach it to the projectorWrapper
   var proj : Projector;
-  proj = projectorWrapper.AddComponent ("Projector");
+  proj = projectorWrapper.AddComponent("Projector");
   proj.material = projectorMaterial;
   // Ignore the default & water layers.
   // You must move this object into a different layer for the shadow to show.
