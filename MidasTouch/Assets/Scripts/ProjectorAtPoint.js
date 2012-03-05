@@ -4,6 +4,7 @@
 // this object.
 
 public var projectorMaterial : Material;
+public var water : GameObject;
 
 function Start () {
 
@@ -15,7 +16,8 @@ function Update () {
 
 function OnCollisionEnter (collision : Collision) {
   Debug.Log(collision.contacts.length);
-
+  x = water.GetComponent("rippleSharp");
+  x.splashCenter();
   // Debug-draw all contact points and normals
   var contactSum : Vector3 = Vector3.zero;
   var normalSum : Vector3 = Vector3.zero;
