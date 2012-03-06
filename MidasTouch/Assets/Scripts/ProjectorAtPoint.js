@@ -11,9 +11,13 @@ function Start () {
 }
 
 function Update () {
-
+ if(transform.childCount >= 1) {
+   proj = transform.Find("projectorWrapper");
+   p = proj.GetComponent("Projector");
+   p.nearClipPlane = Mathf.Clamp(p.nearClipPlane - Time.deltaTime * 0.5, 0.1, 10.0);
+   p.farClipPlane = Mathf.Clamp(p.farClipPlane + Time.deltaTime * 0.53, 0.1, 500.0);
+ }
 }
-
 function OnCollisionEnter (collision : Collision) {
   Debug.Log(collision.contacts.length);
   x = water.GetComponent("rippleSharp");
@@ -31,21 +35,26 @@ function OnCollisionEnter (collision : Collision) {
   var normalAverage = normalSum * (1.0 / collision.contacts.length);
 
   // Make an empty gameObject to hold the Projectpr
-  var projectorWrapper = new GameObject();
   // Set projectorWrapper as a child of this object
-  projectorWrapper.transform.parent = transform;
+  if(transform.childCount == 0) {
+  	var projectorWrapper = new GameObject();
+  	projectorWrapper.transform.parent = transform;
+  	projectorWrapper.name = "projectorWrapper"; 
   // And give it the same position as this object
-  projectorWrapper.transform.position = contactAverage + normalAverage * -1.5;
+  projectorWrapper.transform.position = contactAverage + normalAverage * -7;
   // Create a projector and attach it to the projectorWrapper
   var proj : Projector;
   proj = projectorWrapper.AddComponent("Projector");
   proj.material = projectorMaterial;
+  proj.orthographic = true;
   // Ignore the default & water layers.
   // You must move this object into a different layer for the shadow to show.
   proj.ignoreLayers = (1<<4)+(1<<0);
   projectorWrapper.transform.LookAt(contactAverage);
+	proj.nearClipPlane = (normalAverage * 7.0).magnitude;
+    proj.farClipPlane = (normalAverage * 7.0).magnitude;
+	}	
 }
-
 function OnCollisionStay (collision : Collision) {
   
 }
