@@ -1,5 +1,4 @@
 markdown: rdiscount
 pygments: true
-paginate: 4
 permalink: /:year/:month/:day/:title
 exclude: ["Gemfile"]
