@@ -5,8 +5,6 @@ title: MidasTouch
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/GoGe76Kgo4k" frameborder="0" allowfullscreen></iframe>
 
-Midastou.ch is the gold standard of New York City Pizza. Pizza by the slice is a dime a dozen in New York City and good, healthy quick meals are near impossible to find. Turning a slice of pizza into gold at the touch of a finger attempts to improve the slice and yet makes it inedible.
-
-Bringing the Midas Touch to other materials will be an important step towards reimplementing King Midas's powers through new media.
+Midas Touch is an attempt bring the story of Midas to life through projection mapping.  Models are created using 123DCatch and imported into Unity3D, which employs an XBox Kinect to perform single-hand tracking, so that when a user touches an installed object (in our case, a slice of pizza), the food item is turned to gold.
 
 [Source Code](http://github.com/stevenklise/midastouch)
