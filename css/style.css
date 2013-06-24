@@ -47,7 +47,7 @@ table {
 body {
   font-weight: 900;
   background-color: #d1ae38;
-  background-image: url('/assets/liquid-gold.jpg");
+  background-image: url('../assets/liquid-gold.jpg");
   margin: 0 auto; }
 
 h1 {
