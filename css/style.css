@@ -85,5 +85,6 @@ h1 {
   margin: 0 0; }
 
 p {
+  margin: 1em auto;
   width: 560px;
 }
